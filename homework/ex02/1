@@ -1,0 +1,7 @@
+# You should replace the next line with your command to create a network
+#dmeocker help
+docker build -t pre-work:1.0 .
+#docker run -d --rm --mount type=bind ,source=/data/index.html/target ,target=/usr/local/apache2/htdocs/index.html pre-work:1.0
+docker run -d --rm --net=cscc-network -v csss-storage:/data/index.html pre-work:1.0
+docker run -d --rm --name=web -p 8080:80 --network=cscc-network -v css-storage:/usr/local/apache2/htdocs/  httpd:2.4 
+#docker run -d --rm --name=web  -p 8080:80 httpd:2.4 --mount source=css-storage, destination=/usr/local/apache2/htdocs/ --net=cscc-network
